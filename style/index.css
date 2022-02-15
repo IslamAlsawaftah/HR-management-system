@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
+body {
+    margin: auto;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 600;
+}
+.topnav {
+background-color: #FF7C7A;
+padding: 20px;
+margin-bottom: 40px;
+}
+.topnav a {
+    text-decoration: none;
+    color: #fff;
+    padding: 20px;
+}
+.new-emp {
+    width: 50%;
+    margin: auto;
+}
+.new-emp legend{
+   text-align: center;
+}
+.new-emp fieldset  {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 10px 5px;
+    justify-content: center;
+}
+fieldset >div {
+   flex: 50%;
+   text-align: center;
+   margin-bottom: 5px;
+}
+.new-emp div label{
+    text-align: center;
+ }
+ fieldset div input,select {
+     width: 90%;
+     padding: 5px;
+ }
+.new-emp input[type=submit] {
+   background-color: #477D57;
+   border: none;
+   color: white;
+   padding: 10px 25px;
+   text-decoration: none;
+   display: inline-block;
+   border-radius: 4px;
+   font-size: 16px;
+   cursor: pointer;
+}
+.parent {
+    display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 30px ;
+  margin-bottom: 30px;
+}
+.parent #empSection {
+    flex: 0 0 25%;
+    max-width: 25%;
+text-align: center;
+padding: 10px;
+border-radius: 4px;
+background-color: #477D57
+}
+.parent #empSection img {
+    max-width: 100%;
+    height: auto;}
+footer {
+    width: 100%;
+    background-color: #C4C4C4;
+    text-align: center;
+    padding: 10px 0;
+}
+footer div {
+    margin-bottom: 5px;
+}
+footer .fa {
+    display: inline;
+    text-decoration: none;
+    padding: 10px;
+    color: black;
+}
