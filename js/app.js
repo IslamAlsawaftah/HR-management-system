@@ -2,41 +2,83 @@
 let allEmployees = [];
 let form = document.getElementById('form');
 let empSection = document.getElementById('empSection');
+let empidStartPoint = 1000;
 // constructor based form
-function Employee(fullName, department, image,
-    level, unique) {
-
+function Employee(fullName, department, level,
+    image) {
+    this.id = 0;
     this.fullName = fullName;
     this.department = department;
     this.image = image;
     this.level = level;
-    this.unique = unique;
+    this.salary = 0
     allEmployees.push(this);
 }
+function generateId() {
+    return empidStartPoint++
+}
+Employee.prototype.getId = function () {
+    this.id = generateId();
+}
+Employee.prototype.calcSalary = function () {
+    let min, max;
+    if (this.level == "Senior") {
+        min = 1500;
+        max = 2000;
+    }
+    else if (this.level == "-Mid-Senior") {
+        min = 1000;
+        max = 1500;
+    }
+    else {
+        min = 500;
+        max = 1000;
+    }
+    let totalSalary = generateRand(min, max);
+    this.salary = totalSalary - totalSalary * 0.075
+}
+function generateRand(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+};
+let ghaziSamer = new Employee("Ghazi Sameer", "Administration", "Senior", "images/emp.png")
+let lanaAli = new Employee("Lana Ali", "Finance", "Senior", "images/emp1.jpg")
+let safiWaleed = new Employee("Safi Waleed", "Marketing", "Mid-Senior", "images/emp2.png")
+let omarZaid = new Employee("Omar Zaid", "Development", "Senior", "images/emp3.png")
+let ranaSalah = new Employee("Rana Salah", "Development", "Junior", "url")
+let hadiAhmad = new Employee("Hadi Ahmad", "Administration", "Mid-Senior", "images/emp4.png")
+
 Employee.prototype.render = function () {
+
+    // from task 07
+    // document.write(`${this.fullName} :${this.salary}`)
+    let divsec = document.createElement("div")
+    divsec.setAttribute('class', "show");
+
     let image = document.createElement("img");
     image.setAttribute("src", this.image);
-    empSection.appendChild(image);
+    divsec.appendChild(image);
 
     let name = document.createElement("h3");
-    name.textContent = this.fullName;
-    empSection.appendChild(name);
+    name.textContent = "Name:" + this.fullName;
+    divsec.appendChild(name);
 
-    let id = document.createElement("h3");
-    id.textContent = this.unique;
-    empSection.appendChild(id);
+    let emplId = document.createElement("h3");
+    emplId.textContent = "ID:" + this.id;
+    divsec.appendChild(emplId);
 
     let dept = document.createElement("h3");
-    dept.textContent = this.department;
-    empSection.appendChild(dept);
+    dept.textContent = "Department:" + this.department;
+    divsec.appendChild(dept);
 
-    let level = document.createElement("h3");
-    level.textContent = this.level;
-    empSection.appendChild(level);
+    let lev = document.createElement("h3");
+    lev.textContent = "Level:" + this.level;
+    divsec.appendChild(lev);
 
-}
-Employee.prototype.uniqueId = function () {
-    this.unique = (Math.floor(Math.random() * 10000) + 10000).toString().substring(1);
+    let salary = document.createElement("h3");
+    salary.textContent = this.salary;
+    divsec.appendChild(salary);
+
+    empSection.appendChild(divsec)
 }
 
 form.addEventListener('submit', handelSubmit);
@@ -47,13 +89,16 @@ function handelSubmit(event) {
     let image = event.target.image.value;
     let level = event.target.level.value;
     let newEmployee = new Employee(name, dept, image, level)
-    newEmployee.uniqueId();
-    renderAll();
+    newEmployee.getId();
+    newEmployee.calcSalary();
+    newEmployee.render();
+    form.reset()
 }
-
 function renderAll() {
     for (let i = 0; i < allEmployees.length; i++) {
-        allEmployees[i].uniqueId();
-        allEmployees[i].render();
+        allEmployees[i].getId();
+        allEmployees[i].calcSalary();
+        allEmployees[i].render()
     }
-};
+}
+renderAll();
