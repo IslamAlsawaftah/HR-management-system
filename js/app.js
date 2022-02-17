@@ -40,7 +40,7 @@ Employee.prototype.calcSalary = function () {
 function generateRand(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 };
-let ghaziSamer = new Employee("Ghazi Sameer", "Administration", "Senior", "images/emp.png")
+let ghaziSamer = new Employee("Ghazi Sameer", "administration", "Senior", "images/emp.png")
 let lanaAli = new Employee("Lana Ali", "Finance", "Senior", "images/emp1.jpg")
 let safiWaleed = new Employee("Safi Waleed", "Marketing", "Mid-Senior", "images/emp2.png")
 let omarZaid = new Employee("Omar Zaid", "Development", "Senior", "images/emp3.png")

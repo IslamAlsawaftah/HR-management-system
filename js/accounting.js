@@ -11,12 +11,6 @@ function Data(department, numOfEmployees, totalSalary,
     allData.push(this);
 }
 
-let obj1 = new Data("Administration")
-let obj2 = new Data("Marketing")
-let obj3 = new Data("Development")
-let obj4 = new Data("Finance")
-let total = new Data("Total")
-
 function renderHeader() {
     let tr = document.createElement("tr");
     table.appendChild(tr);
@@ -68,4 +62,18 @@ function renderBody() {
     }
 
 }
+
+function getData() {
+    let Employees = localStorage.getItem("Employees")
+    let parseEmps = JSON.parse(Employees)
+    if (parseEmps != null) {
+        for (let i = 0; i < parseEmps.length; i++) {
+            new Data(parseEmps[i].department,parseEmps[i].numOfEmp, parseEmps[i].totalSalary, parseEmps[i].averageSalary)
+            parseEmps[i].department == ""
+        };
+        
+    }
+}
+
+getData();
 renderBody();
