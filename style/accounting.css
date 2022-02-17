@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
+body {
+    margin: auto;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 600;
+}
+.topnav {
+background-color: #FF7C7A;
+padding: 20px;
+margin-bottom: 40px;
+}
+.topnav a {
+    text-decoration: none;
+    color: #fff;
+    padding: 20px;
+}
+footer {
+    width: 100%;
+    background-color: #C4C4C4;
+    text-align: center;
+    padding: 10px 0;
+}
+footer div {
+    margin-bottom: 5px;
+}
+footer .fa {
+    display: inline;
+    text-decoration: none;
+    padding: 10px;
+    color: black;
+}

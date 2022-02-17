@@ -47,6 +47,21 @@ let omarZaid = new Employee("Omar Zaid", "Development", "Senior", "images/emp3.p
 let ranaSalah = new Employee("Rana Salah", "Development", "Junior", "url")
 let hadiAhmad = new Employee("Hadi Ahmad", "Administration", "Mid-Senior", "images/emp4.png")
 
+function saveEmployee() {
+    let formattedData = JSON.stringify(allEmployees)
+    localStorage.setItem("Employees", formattedData)
+}
+function getData() {
+    let Employees = localStorage.getItem("Employees")
+    let parseEmps = JSON.parse(Employees)
+    if (parseEmps != null) {
+        allEmployees = [];
+        for (let i = 0; i < parseEmps.length; i++) {
+            new Employee(parseEmps[i].fullName, parseEmps[i].department, parseEmps[i].level, parseEmps[i].image)
+        };
+    }
+    renderAll();
+}
 Employee.prototype.render = function () {
 
     // from task 07
@@ -92,13 +107,17 @@ function handelSubmit(event) {
     newEmployee.getId();
     newEmployee.calcSalary();
     newEmployee.render();
+    saveEmployee();
     form.reset()
 }
 function renderAll() {
+    //epmty divsec
+    empSection.innerHTML = "";
     for (let i = 0; i < allEmployees.length; i++) {
         allEmployees[i].getId();
         allEmployees[i].calcSalary();
         allEmployees[i].render()
     }
+
 }
-renderAll();
+getData();
