@@ -26,7 +26,8 @@ Employee.prototype.calcSalary = function () {
         min = 1500;
         max = 2000;
     }
-    else if (this.level == "-Mid-Senior") {
+    
+    else if (this.level == "Mid-Senior") {
         min = 1000;
         max = 1500;
     }
@@ -40,7 +41,6 @@ Employee.prototype.calcSalary = function () {
 function generateRand(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 };
-let ghaziSamer = new Employee("Ghazi Sameer", "administration", "Senior", "images/emp.png")
 let lanaAli = new Employee("Lana Ali", "Finance", "Senior", "images/emp1.jpg")
 let safiWaleed = new Employee("Safi Waleed", "Marketing", "Mid-Senior", "images/emp2.png")
 let omarZaid = new Employee("Omar Zaid", "Development", "Senior", "images/emp3.png")
@@ -103,7 +103,7 @@ function handelSubmit(event) {
     let dept = event.target.dept.value;
     let image = event.target.image.value;
     let level = event.target.level.value;
-    let newEmployee = new Employee(name, dept, image, level)
+    let newEmployee = new Employee(name, dept, level, image)
     newEmployee.getId();
     newEmployee.calcSalary();
     newEmployee.render();
@@ -118,6 +118,5 @@ function renderAll() {
         allEmployees[i].calcSalary();
         allEmployees[i].render()
     }
-
 }
 getData();
